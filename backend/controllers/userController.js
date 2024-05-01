@@ -6,23 +6,21 @@ export const register = async (req, res) => {
   try {
     const { fullName, username, password, confirmPassword, gender } = req.body;
     if (!fullName || !username || !password || !confirmPassword || !gender) {
-      return res.status(400).json({ message: "All field are required" });
+      return res.status(400).json({ message: "All fields are required" });
     }
-
     if (password !== confirmPassword) {
       return res.status(400).json({ message: "Password do not match" });
     }
 
     const user = await User.findOne({ username });
-
     if (user) {
-      return res.status(400).json({ message: "User already exists" });
+      return res
+        .status(400)
+        .json({ message: "Username already exit try different" });
     }
-
-    // hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // profile photo
+    // profilePhoto
     const maleProfilePhoto = `https://avatar.iran.liara.run/public/boy?username=${username}`;
     const femaleProfilePhoto = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
@@ -33,13 +31,14 @@ export const register = async (req, res) => {
       profilePhoto: gender === "male" ? maleProfilePhoto : femaleProfilePhoto,
       gender,
     });
-
-    res.status(201).json({ message: "User registered successfully" });
+    return res.status(201).json({
+      message: "Account created successfully.",
+      success: true,
+    });
   } catch (error) {
     console.log(error);
   }
 };
-
 export const login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -65,7 +64,7 @@ export const login = async (req, res) => {
     };
 
     const token = await jwt.sign(tokenData, process.env.JWT_SECRET_KEY, {
-      expiresIn: "60d",
+      expiresIn: "1d",
     });
 
     return res
@@ -85,12 +84,22 @@ export const login = async (req, res) => {
     console.log(error);
   }
 };
-
-export const logout = async (req, res) => {
+export const logout = (req, res) => {
   try {
     return res.status(200).cookie("token", "", { maxAge: 0 }).json({
       message: "logged out successfully.",
     });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getOtherUsers = async (req, res) => {
+  try {
+    const loggedInUserId = req.id;
+    const otherUsers = await User.find({ _id: { $ne: loggedInUserId } }).select(
+      "-password"
+    );
+    return res.status(200).json(otherUsers);
   } catch (error) {
     console.log(error);
   }

@@ -1,3 +1,4 @@
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./config/database.js";
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 //middleware
 app.use(express.json());
+app.use(cookieParser());
 
 //routes
 app.use("/api/v1/user", userRoute);
