@@ -26,13 +26,27 @@ export const sentMessage = async (req, res) => {
     if (newMessage) {
       gotConversation.messages.push(newMessage._id);
     }
-    // await Conversation.save();
+
+    await Promise.all([gotConversation.save(), newMessage.save()]);
+
+    // SOCKET IO
 
     return res.status(201).json({
       message: "Message send successfully",
     });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-    // SOCKET IO
+export const getMesage = async (req, res) => {
+  try {
+    const receiverId = req.params.id;
+    const senderId = req.id;
+    const conversation = await Conversation.findOne({
+      participants: { $all: [senderId, receiverId] },
+    }).populate("messages");
+    return res.status(200).json(conversation?.messages);
   } catch (error) {
     console.log(error);
   }
