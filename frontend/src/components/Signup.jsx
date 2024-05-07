@@ -68,7 +68,7 @@ const Signup = () => {
             </div>
           </div>
 
-          <p className="text-center text-black font-extrabold">
+          <p className="text-center text-black font-extrabold my-2">
             Already have an account ?
             <Link to="/login" className="text-gray-800 font-bold ml-2">
               Login Here
