@@ -10,9 +10,20 @@ const Signup = () => {
     gender: "",
   });
 
+  const handleCheckbox = (gender) => {
+    setUser({ ...user, gender });
+  };
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     console.log(user);
+    setUser({
+      fullName: "",
+      username: "",
+      password: "",
+      confirmPassword: "",
+      gender: "",
+    });
   };
 
   return (
@@ -84,11 +95,23 @@ const Signup = () => {
           <div className="flex items-center my-4">
             <div className="flex items-center">
               <p className="text-black">Male</p>
-              <input type="checkbox" defaultChecked className="checkbox mx-2" />
+              <input
+                type="checkbox"
+                checked={user.gender === "male"}
+                onChange={() => handleCheckbox("male")}
+                defaultChecked
+                className="checkbox mx-2"
+              />
             </div>
             <div className="flex items-center">
               <p className="text-black">Female</p>
-              <input type="checkbox" defaultChecked className="checkbox mx-2" />
+              <input
+                type="checkbox"
+                checked={user.gender === "female"}
+                onChange={() => handleCheckbox("female")}
+                defaultChecked
+                className="checkbox mx-2"
+              />
             </div>
           </div>
 
