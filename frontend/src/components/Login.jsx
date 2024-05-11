@@ -43,7 +43,7 @@ const Login = () => {
 
           <div>
             <button className="btn btn-block btn-sm mt-3 border-slate-500 font-bold">
-              Sign Up
+              Sign In
             </button>
           </div>
         </form>
