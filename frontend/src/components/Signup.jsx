@@ -125,7 +125,7 @@ const Signup = () => {
           <div>
             <button
               type="submit"
-              className="btn btn-block btn-sm mt-3 border-slate-500 font-bold"
+              className="btn btn-block btn-md mt-3 border-slate-500 font-bold"
             >
               Sign Up
             </button>
