@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -19,7 +20,20 @@ const Signup = () => {
     // console.log(user);
 
     try {
-    } catch (error) {}
+      const res = await axios.post(
+        "http://localhost:5000/api/v1/user/register",
+        user,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
 
     setUser({
       fullName: "",
