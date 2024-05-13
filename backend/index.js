@@ -1,4 +1,5 @@
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./config/database.js";
@@ -19,6 +20,7 @@ const corsOption = {
   origin: "http://localhost:3000",
   credentials: true,
 };
+app.use(cors(corsOption));
 
 // routes
 app.use("/api/v1/user", userRoute);
