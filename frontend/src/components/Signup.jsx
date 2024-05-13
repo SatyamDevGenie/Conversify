@@ -14,9 +14,13 @@ const Signup = () => {
     setUser({ ...user, gender });
   };
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log(user);
+    // console.log(user);
+
+    try {
+    } catch (error) {}
+
     setUser({
       fullName: "",
       username: "",
