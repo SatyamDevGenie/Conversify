@@ -16,11 +16,8 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/v1/user/login",
-        {
-          username: user.username,
-          password: user.password,
-        },
+        `http://localhost:8000/api/v1/user/login`,
+        user,
         {
           headers: {
             "Content-Type": "application/json",
@@ -34,7 +31,8 @@ const Login = () => {
       }
       console.log(res.data);
     } catch (error) {
-      console.error(error.response.data); // Log the server error response
+      toast.error(error.response.data); // Log the server error response
+      console.log(error);
     }
 
     setUser({
@@ -82,7 +80,7 @@ const Login = () => {
           <p className="text-center text-black font-extrabold mt-2">
             Don't have an account ?
             <Link to="/signup" className="text-gray-800 font-bold ml-2">
-              Sign Up
+              Register Here
             </Link>
           </p>
 

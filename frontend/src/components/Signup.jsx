@@ -4,6 +4,8 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState({
     fullName: "",
     username: "",
@@ -12,21 +14,13 @@ const Signup = () => {
     gender: "",
   });
 
-  const navigate = useNavigate();
-
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/v1/user/register",
-        {
-          fullName: user.fullName,
-          username: user.username,
-          password: user.password,
-          confirmPassword: user.confirmPassword,
-          gender: user.gender,
-        },
+        `http://localhost:8000/api/v1/user/register`,
+        user,
         {
           headers: {
             "Content-Type": "application/json",
@@ -40,7 +34,8 @@ const Signup = () => {
       }
       console.log(res.data);
     } catch (error) {
-      console.error(error.response.data); // Log the server error response
+      toast.error(error.response.data); // Log the server error response
+      console.log(error);
     }
 
     setUser({
