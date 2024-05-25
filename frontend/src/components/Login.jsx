@@ -26,10 +26,10 @@ const Login = () => {
         }
       );
       if (res.data.success) {
-        navigate("/");
         toast.success(res.data.message);
       }
       console.log(res.data);
+      navigate("/");
     } catch (error) {
       toast.error(error.response.data); // Log the server error response
       console.log(error);
