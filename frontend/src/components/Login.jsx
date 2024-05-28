@@ -25,13 +25,10 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      if (res.data.success) {
-        toast.success(res.data.message);
-      }
-      console.log(res.data);
       navigate("/");
+      console.log(res);
     } catch (error) {
-      toast.error(error.response.data); // Log the server error response
+      toast.error(error.response.data.message); // Log the server error response
       console.log(error);
     }
 
