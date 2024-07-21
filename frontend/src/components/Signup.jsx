@@ -34,7 +34,7 @@ const Signup = () => {
       }
       console.log(res.data);
     } catch (error) {
-      toast.error(error.response.data.message); // Log the server error response
+      toast.error(error.response.data.message);
       console.log(error);
     }
 
@@ -48,12 +48,12 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-w-96 mx-auto">
-      <div className="w-full p-9 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100">
+    <div className="min-w-96 mx-auto p-4 sm:p-6 md:p-8 lg:p-10">
+      <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100">
         <h1 className="text-3xl font-extrabold text-center text-white">
           Register
         </h1>
-        <form onSubmit={onSubmitHandler} className="mt-5">
+        <form onSubmit={onSubmitHandler} className="mt-5 space-y-4">
           <div>
             <label className="label p-2">
               <span className="text-base label-text text-black font-semibold">
@@ -116,7 +116,7 @@ const Signup = () => {
               required
             />
           </div>
-          <div className="flex items-center my-4">
+          <div className="flex items-center my-4 space-x-4">
             <div className="flex items-center">
               <p className="text-black">Male</p>
               <input

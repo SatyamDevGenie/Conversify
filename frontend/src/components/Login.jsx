@@ -39,8 +39,8 @@ const Login = () => {
   };
 
   return (
-    <div className="min-w-96 mx-auto">
-      <div className="w-full p-12 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100">
+    <div className="min-w-96 mx-auto px-6 sm:px-6 lg:px-12">
+      <div className="max-w-md mx-auto p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100">
         <h1 className="text-3xl font-extrabold text-center text-white ">
           Login
         </h1>
