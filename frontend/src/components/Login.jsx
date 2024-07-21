@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { setAuthUser } from "../redux/userSlice";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [user, setUser] = useState({
     username: "",
@@ -26,7 +29,8 @@ const Login = () => {
         }
       );
       navigate("/");
-      console.log(res.data);
+      // console.log(res.data);
+      dispatch(setAuthUser(res.data));
     } catch (error) {
       toast.error(error.response.data.message); // Log the server error response
       console.log(error);
