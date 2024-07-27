@@ -17,6 +17,9 @@ const Sidebar = () => {
       </form>
       <div className="divider px-3"></div>
       <OtherUsers />
+      <div className="mt-2">
+        <button className="btn btn-sm">Logout</button>
+      </div>
     </div>
   );
 };
