@@ -1,4 +1,5 @@
 import React from "react";
+import SendInput from "./SendInput";
 
 const MessageContainer = () => {
   return (
@@ -18,6 +19,7 @@ const MessageContainer = () => {
           </div>
         </div>
       </div>
+      <SendInput />
     </div>
   );
 };
