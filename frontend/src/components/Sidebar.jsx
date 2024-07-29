@@ -18,7 +18,7 @@ const Sidebar = () => {
       <div className="divider px-3"></div>
       <OtherUsers />
       <div className="mt-2">
-        <button className="btn btn-sm">Logout</button>
+        <button className="btn btn-sm bg-slate-950 text-white">Logout</button>
       </div>
     </div>
   );
