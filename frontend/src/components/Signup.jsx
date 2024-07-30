@@ -54,11 +54,15 @@ const Signup = () => {
   return (
     <div className="min-w-96 mx-auto">
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100">
-        <h1 className="text-3xl font-bold text-center">Signup</h1>
-        <form onSubmit={onSubmitHandler} action="">
+        <h1 className="text-3xl font-extrabold text-center text-white">
+          Register
+        </h1>
+        <form onSubmit={onSubmitHandler} action="" className="mt-3">
           <div>
             <label className="label p-2">
-              <span className="text-base label-text">Full Name</span>
+              <span className="text-base label-text text-black font-semibold">
+                Full Name
+              </span>
             </label>
             <input
               value={user.fullName}
@@ -70,7 +74,9 @@ const Signup = () => {
           </div>
           <div>
             <label className="label p-2">
-              <span className="text-base label-text">Username</span>
+              <span className="text-base label-text text-black font-semibold">
+                Username
+              </span>
             </label>
             <input
               value={user.username}
@@ -82,7 +88,9 @@ const Signup = () => {
           </div>
           <div>
             <label className="label p-2">
-              <span className="text-base label-text">Password</span>
+              <span className="text-base label-text text-black font-semibold">
+                Password
+              </span>
             </label>
             <input
               value={user.password}
@@ -94,7 +102,9 @@ const Signup = () => {
           </div>
           <div>
             <label className="label p-2">
-              <span className="text-base label-text">Confirm Password</span>
+              <span className="text-base label-text text-black font-semibold">
+                Confirm Password
+              </span>
             </label>
             <input
               value={user.confirmPassword}
@@ -128,13 +138,13 @@ const Signup = () => {
               />
             </div>
           </div>
-          <p className="text-center my-2">
+          <p className="text-center my-2 text-black font-semibold">
             Already have an account? <Link to="/login"> login </Link>
           </p>
           <div>
             <button
               type="submit"
-              className="btn btn-block btn-sm mt-2 border border-slate-700"
+              className="btn btn-block btn-sm mt-2 border border-slate-700 "
             >
               Singup
             </button>
