@@ -1,8 +1,23 @@
+import axios from "axios";
 import React from "react";
+import toast from "react-hot-toast";
 import { BiSearchAlt2 } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 import OtherUsers from "./OtherUsers";
 
 const Sidebar = () => {
+  const navigate = useNavigate(); // to navigation
+
+  const logoutHandler = async () => {
+    try {
+      const res = await axios.get(`http://localhost:8000/api/v1/user/logout`);
+      navigate("/login"); // navigate to login page
+      toast.success(res.data.message);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="border-r border-slate-500 p-4 flex flex-col">
       <form action="" className="flex items-center gap-2">
@@ -18,7 +33,12 @@ const Sidebar = () => {
       <div className="divider px-3"></div>
       <OtherUsers />
       <div className="mt-2">
-        <button className="btn btn-sm bg-slate-950 text-white">Logout</button>
+        <button
+          onClick={logoutHandler}
+          className="btn btn-sm bg-slate-950 text-white"
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
