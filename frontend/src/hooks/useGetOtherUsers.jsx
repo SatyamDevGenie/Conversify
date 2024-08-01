@@ -10,7 +10,7 @@ const useGetOtherUsers = () => {
     const fetchOtherUsers = async () => {
       try {
         axios.defaults.withCredentials = true; // important line to remember for CORS ERROR......
-        const res = await axios.get(`http://localhost:8000/api/v1/user/`);
+        const res = await axios.get(`http://localhost:8000/api/v1/user`);
         console.log(res);
         // store
         dispatch(setOtherUsers(res.data));
