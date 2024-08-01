@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSelectedUser } from "../redux/userSlice";
 
 const OtherUser = ({ user }) => {
@@ -7,8 +7,11 @@ const OtherUser = ({ user }) => {
 
   const dispatch = useDispatch(); // to dispatchb action from redux store....
 
+  const { selectedUser } = useSelector((store) => store.user);
+
   const selectedUserHandler = (user) => {
     // console.log(user);
+
     dispatch(setSelectedUser(user));
   };
 
