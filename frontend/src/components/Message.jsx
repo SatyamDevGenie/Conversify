@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const Message = ({ message }) => {
+  const scroll = useRef(); // react-hook........
+
+  useEffect(() => {
+    scroll.current?.scrollIntoView({ behavior: "smooth" });
+  }, [message]);
+
   return (
-    <div className="chat chat-end">
+    <div ref={scroll} className="chat chat-end">
       <div className="chat-image avatar">
         <div className="w-10 rounded-full">
           <img
