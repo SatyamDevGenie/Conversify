@@ -2,11 +2,29 @@ import React, { useState } from "react";
 
 import { IoSend } from "react-icons/io5";
 
+import axios from "axios";
+
+import { useDispatch, useSelector } from "react-redux";
+
 const SendInput = () => {
   const [message, setMessage] = useState(""); //useState........
 
-  const onSubmitHandler = (e) => {
+  const dispatch = useDispatch(); // to dispatch action from redux store..........
+
+  const { selectedUser } = useSelector((store) => store.user);
+
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
+
+    try {
+      const res = await axios.post(
+        `http://localhost:8000/api/v1/message/send/${selectedUser?._id}`
+      );
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+
     alert(message);
   };
 
