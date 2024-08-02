@@ -29,14 +29,11 @@ export const sentMessage = async (req, res) => {
 
     await Promise.all([gotConversation.save(), newMessage.save()]);
 
-
-
     // SOCKET IO
 
-    
-
     return res.status(201).json({
-      message: "Message send successfully",
+      // message: "Message send successfully",
+      newMessage,
     });
   } catch (error) {
     console.log(error);
