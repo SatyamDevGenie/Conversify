@@ -20,9 +20,17 @@ const Sidebar = () => {
     }
   };
 
+  const searchSubmitHandler = () => {
+    alert("search");
+  };
+
   return (
     <div className="border-r border-slate-500 p-4 flex flex-col">
-      <form action="" className="flex items-center gap-2">
+      <form
+        onSubmit={searchSubmitHandler}
+        action=""
+        className="flex items-center gap-2"
+      >
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
