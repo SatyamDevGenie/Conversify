@@ -2,13 +2,18 @@ import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { BiSearchAlt2 } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setOtherUsers } from "../redux/userSlice";
 import OtherUsers from "./OtherUsers";
 
 const Sidebar = () => {
-  const navigate = useNavigate(); // to navigate
-
   const [search, setSearch] = useState(""); // hook.....
+
+  const { otherUsers } = useSelector((store) => store.user);
+
+  const navigate = useNavigate(); // to navigate
+  const dispatch = useDispatch(); // dipatch actions from the redux store.......
 
   const logoutHandler = async () => {
     try {
@@ -22,6 +27,14 @@ const Sidebar = () => {
 
   const searchSubmitHandler = (e) => {
     e.preventDefault(); // default behaviour of a page.........
+    const conversationUser = otherUsers?.find((user) =>
+      user.fullName.toLowerCase().includes(search.toLowerCase())
+    );
+    if (conversationUser) {
+      dispatch(setOtherUsers([conversationUser]));
+    } else {
+      toast.error("User not found!");
+    }
   };
 
   return (
