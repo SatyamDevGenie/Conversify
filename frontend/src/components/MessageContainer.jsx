@@ -37,7 +37,9 @@ const MessageContainer = () => {
           <h1 className="text-3xl text-white font-bold">
             {authUser?.fullName}
           </h1>
-          <h1 className="text-2xl text-black">Let's start conversation</h1>
+          <h1 className="text-2xl text-white font-semibold">
+            Let's start conversation
+          </h1>
         </div>
       )}
     </>
