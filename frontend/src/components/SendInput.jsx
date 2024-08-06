@@ -34,7 +34,7 @@ const SendInput = () => {
     } catch (error) {
       console.log(error);
     }
-    setMessage("");
+    setMessage(""); // emoty string........
   };
 
   return (
