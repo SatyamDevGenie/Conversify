@@ -5,7 +5,7 @@ import Messages from "./Messages";
 import SendInput from "./SendInput";
 
 const MessageContainer = () => {
-  const { selectedUser } = useSelector((store) => store.user);
+  const { selectedUser, authUser } = useSelector((store) => store.user);
 
   const dispatch = useDispatch(); // dispatch action from redux store........
 
@@ -33,7 +33,12 @@ const MessageContainer = () => {
           <SendInput />
         </div>
       ) : (
-        <h1>Let's start the conversation</h1>
+        <div className="md:min-w-[550px] flex flex-col justify-center items-center">
+          <h1 className="text-3xl text-white font-extrabold">
+            Hi,{authUser?.fullName}
+          </h1>
+          <h1 className="text-2xl text-black">Let's start conversation</h1>
+        </div>
       )}
     </>
   );
