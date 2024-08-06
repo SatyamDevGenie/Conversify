@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import toast from "react-hot-toast";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
@@ -7,8 +7,6 @@ import OtherUsers from "./OtherUsers";
 
 const Sidebar = () => {
   const navigate = useNavigate(); // to navigate
-
-  const [search, setSearch] = useState(""); // react hook.........
 
   const logoutHandler = async () => {
     try {
@@ -20,22 +18,12 @@ const Sidebar = () => {
     }
   };
 
-  const searchSubmitHandler = (e) => {
-    alert("search functionality logic");
-  };
-
   return (
     <div className="border-r border-slate-500 p-4 flex flex-col">
-      <form
-        onSubmit={searchSubmitHandler}
-        action=""
-        className="flex items-center gap-2"
-      >
+      <form action="" className="flex items-center gap-2">
         <input
           className="input input-bordered rounded-md"
           type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
           placeholder="Search..."
         />
         <button type="submit" className="btn btn-circle bg-zinc-700 text-white">
