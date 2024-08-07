@@ -35,7 +35,7 @@ const Sidebar = () => {
       <div className="mt-2">
         <button
           onClick={logoutHandler}
-          className="btn btn-sm bg-slate-950 text-white"
+          className="btn btn-sm bg-slate-600 text-black"
         >
           Logout
         </button>
