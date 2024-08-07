@@ -8,17 +8,17 @@ import { setOtherUsers } from "../redux/userSlice";
 import OtherUsers from "./OtherUsers";
 
 const Sidebar = () => {
-  const navigate = useNavigate(); // to navigate
+  const navigate = useNavigate(); // to navigate......
   const dispatch = useDispatch();
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(""); // useState for searching user.......
 
   const { otherUsers } = useSelector((store) => store.user);
 
   const logoutHandler = async () => {
     try {
       const res = await axios.get(`http://localhost:8000/api/v1/user/logout`);
-      navigate("/login"); // navigate to login page
+      navigate("/login"); // navigate to login page......
       toast.success(res.data.message);
     } catch (error) {
       console.log(error);
@@ -27,13 +27,13 @@ const Sidebar = () => {
 
   const searchSubmitHandler = (e) => {
     e.preventDefault();
-    const conversationUser = otherUsers.filter((user) =>
+    const conversationUser = otherUsers?.find((user) =>
       user.fullName.toLowerCase().includes(search.toLowerCase())
     );
-    if (conversationUser.length > 0) {
-      dispatch(setOtherUsers(conversationUser));
+    if (conversationUser) {
+      dispatch(setOtherUsers([conversationUser]));
     } else {
-      toast.error("User not found");
+      toast.error("User not found!");
     }
   };
 
