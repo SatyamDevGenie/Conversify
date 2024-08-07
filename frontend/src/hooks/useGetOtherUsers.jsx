@@ -13,13 +13,14 @@ const useGetOtherUsers = () => {
         const res = await axios.get(`http://localhost:8000/api/v1/user`);
 
         // store
+        console.log("other users -> ", res);
         dispatch(setOtherUsers(res.data));
       } catch (error) {
         console.log(error);
       }
     };
     fetchOtherUsers(); // function calling here......
-  });
+  }, []);
 };
 
 export default useGetOtherUsers;
