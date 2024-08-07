@@ -29,7 +29,6 @@ const Login = () => {
         }
       );
       navigate("/");
-      // console.log(res.data);
       dispatch(setAuthUser(res.data));
     } catch (error) {
       toast.error(error.response.data.message); // Log the server error response
