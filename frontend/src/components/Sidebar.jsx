@@ -30,8 +30,8 @@ const Sidebar = () => {
     const conversationUser = otherUsers.filter((user) =>
       user.fullName.toLowerCase().includes(search.toLowerCase())
     );
-    if (conversationUser) {
-      dispatch(setOtherUsers([conversationUser]));
+    if (conversationUser.length > 0) {
+      dispatch(setOtherUsers(conversationUser));
     } else {
       toast.error("User not found");
     }
