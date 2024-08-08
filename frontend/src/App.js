@@ -29,7 +29,9 @@ function App() {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("http://localhost:8000", {});
+      const socket = io("http://localhost:8000", {
+        // some code to be implement later onwards......
+      });
       setSocket(socket);
     }
   }, [authUser]); // dependency array....
