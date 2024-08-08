@@ -26,7 +26,7 @@ const Sidebar = () => {
   };
 
   const searchSubmitHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // default behaviour of a page..........
     const conversationUser = otherUsers.find((user) =>
       user.fullName.toLowerCase().includes(search.toLowerCase())
     );
