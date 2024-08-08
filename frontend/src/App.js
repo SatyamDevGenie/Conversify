@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import io from "socket.io-client";
 import "./App.css";
 import HomePage from "./components/HomePage";
 import Login from "./components/Login";
@@ -20,6 +23,17 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const [socket, setSocket] = useState(null);
+
+  const { authUser } = useSelector((store) => store.user);
+
+  useEffect(() => {
+    if (authUser) {
+      const socket = io("http://localhost:8000", {});
+      setSocket(socket);
+    }
+  }, [authUser]); // dependency array....
+
   return (
     <div className="p-4 h-screen flex items-center justify-center">
       <RouterProvider router={router} />
