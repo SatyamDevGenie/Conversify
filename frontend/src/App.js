@@ -83,7 +83,7 @@ function App() {
   useEffect(() => {
     if (authUser) {
       const newSocket = io("http://localhost:8000", {
-        withCredentials: true, // Enable credentials for CORS
+        // withCredentials: true, // Enable credentials for CORS
       });
       setSocket(newSocket);
 

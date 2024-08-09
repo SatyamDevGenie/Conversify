@@ -37,11 +37,12 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import http from "http"; // Import http
-import { Server } from "socket.io"; // Import socket.io
+import http from "http";
+import { Server } from "socket.io";
 import connectDB from "./config/database.js";
 import messageRoute from "./routes/mesageRoute.js";
 import userRoute from "./routes/userRoute.js";
+// import { app, server } from "./socket/socket.js";
 
 dotenv.config({});
 
