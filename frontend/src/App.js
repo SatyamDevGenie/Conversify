@@ -84,6 +84,9 @@ function App() {
     if (authUser) {
       const newSocket = io("http://localhost:8000", {
         // withCredentials: true, // Enable credentials for CORS
+        query: {
+          userId: authUser._id,
+        },
       });
       setSocket(newSocket);
 
