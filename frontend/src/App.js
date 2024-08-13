@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { setSocket } from "./redux/socketSlice";
+import { setOnlineUsers } from "./redux/userSlice";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ function App() {
   // const [socket, setSocket] = useState(null);
 
   const { authUser } = useSelector((store) => store.user);
+  const { socket } = useSelector((store) => store.socket);
 
   const dispatch = useDispatch();
 
@@ -40,8 +42,9 @@ function App() {
       });
       dispatch(setSocket(socket));
 
-      socket.on("connect", () => {
-        console.log("Connected to socket server");
+      socket.on("getOnlineUsers", (onlineUsers) => {
+        // console.log("Connected to socket server");
+        dispatch(setOnlineUsers(onlineUsers));
       });
 
       socket.on("disconnect", () => {
@@ -51,6 +54,13 @@ function App() {
       return () => {
         socket.disconnect(); // Cleanup the socket connection on component unmount
       };
+
+      // return () => socket.close();
+    } else {
+      if (socket) {
+        socket.close();
+        dispatch(setSocket(null));
+      }
     }
   }, [authUser]);
 
