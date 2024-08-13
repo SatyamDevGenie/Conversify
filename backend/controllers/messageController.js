@@ -1,3 +1,5 @@
+import { getReceiverSocketId } from "../../backend/index.js";
+// import { io } from "../index.js";
 import { Conversation } from "../models/conversationModel.js";
 import { Message } from "../models/messageModel.js";
 
@@ -30,6 +32,10 @@ export const sentMessage = async (req, res) => {
     await Promise.all([gotConversation.save(), newMessage.save()]);
 
     // SOCKET IO
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("newMessage", newMessage);
+    }
 
     return res.status(201).json({
       // message: "Message send successfully",

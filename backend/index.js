@@ -20,7 +20,11 @@ const io = new Server(server, {
   },
 });
 
-const userSocketMap = {}; // empty object something like this => {userId->socketId}
+export const getReceiverSocketId = (receiverId) => {
+  return userSocketMap[receiverId];
+};
+
+const userSocketMap = {}; // like this => {userId->socketId}
 
 const PORT = process.env.PORT || 5000;
 
