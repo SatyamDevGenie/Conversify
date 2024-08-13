@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setOtherUsers } from "../redux/userSlice";
+import { setAuthUser, setOtherUsers } from "../redux/userSlice";
 import OtherUsers from "./OtherUsers";
 
 const Sidebar = () => {
@@ -20,6 +20,7 @@ const Sidebar = () => {
       const res = await axios.get(`http://localhost:8000/api/v1/user/logout`);
       navigate("/login"); // navigate to login page......
       toast.success(res.data.message);
+      dispatch(setAuthUser(null)); // after user logout, state will be empty..........
     } catch (error) {
       console.log(error);
     }
