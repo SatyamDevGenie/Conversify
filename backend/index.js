@@ -66,4 +66,4 @@ server.listen(PORT, () => {
   console.log(`Server running on ${PORT}`);
 });
 
-export default { io };
+export { app, io, server };
