@@ -42,7 +42,7 @@ function App() {
       });
       dispatch(setSocket(socket));
 
-      socket.on("getOnlineUsers", (onlineUsers) => {
+      socket?.on("getOnlineUsers", (onlineUsers) => {
         // console.log("Connected to socket server");
         dispatch(setOnlineUsers(onlineUsers));
       });
@@ -54,8 +54,6 @@ function App() {
       return () => {
         socket.disconnect(); // Cleanup the socket connection on component unmount
       };
-
-      // return () => socket.close();
     } else {
       if (socket) {
         socket.close();
