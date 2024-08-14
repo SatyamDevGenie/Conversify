@@ -65,3 +65,5 @@ server.listen(PORT, () => {
   connectDB();
   console.log(`Server running on ${PORT}`);
 });
+
+export default { io };
