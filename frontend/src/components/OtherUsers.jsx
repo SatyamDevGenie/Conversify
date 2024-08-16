@@ -1,3 +1,4 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import useGetOtherUsers from "../hooks/useGetOtherUsers";
 import OtherUser from "./OtherUser";
