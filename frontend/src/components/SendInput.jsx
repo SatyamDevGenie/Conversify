@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-
-import { IoSend } from "react-icons/io5";
-
 import axios from "axios";
-
+import React, { useState } from "react";
+import { IoSend } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { setMessages } from "../redux/messageSlice";
 
@@ -29,7 +26,6 @@ const SendInput = () => {
           withCredentials: true,
         }
       );
-      console.log(res);
       dispatch(setMessages([...messages, res?.data?.newMessage]));
     } catch (error) {
       console.log(error);
