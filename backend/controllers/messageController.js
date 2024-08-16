@@ -28,6 +28,8 @@ export const sentMessage = async (req, res) => {
       gotConversation.messages.push(newMessage._id);
     }
 
+    // await gotConversation.save();
+
     await Promise.all([gotConversation.save(), newMessage.save()]);
 
     // SOCKET IO
