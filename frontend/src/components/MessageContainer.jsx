@@ -1,6 +1,4 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedUser } from "../redux/userSlice";
 import Messages from "./Messages";
 import SendInput from "./SendInput";
 
@@ -13,9 +11,9 @@ const MessageContainer = () => {
 
   const isOnline = onlineUsers?.includes(selectedUser?._id);
 
-  useEffect(() => {
-    return () => dispatch(setSelectedUser(null));
-  }, []);
+  // useEffect(() => {
+  //   return () => dispatch(setSelectedUser(null));
+  // }, []);
 
   return (
     <>
