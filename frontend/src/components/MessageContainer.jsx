@@ -11,10 +11,6 @@ const MessageContainer = () => {
 
   const isOnline = onlineUsers?.includes(selectedUser?._id);
 
-  // useEffect(() => {
-  //   return () => dispatch(setSelectedUser(null));
-  // }, []);
-
   return (
     <>
       {selectedUser !== null ? (
