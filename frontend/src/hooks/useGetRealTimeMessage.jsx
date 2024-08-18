@@ -11,6 +11,6 @@ const useGetRealTimeMessage = () => {
       dispatch(setMessages([...messages, newMessage]));
     });
     return () => socket?.off("newMessage");
-  }, [setMessages, messages]);
+  }, [setMessages, messages, socket]);
 };
 export default useGetRealTimeMessage;
