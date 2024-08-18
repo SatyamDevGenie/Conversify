@@ -23,7 +23,9 @@ const MessageContainer = () => {
             </div>
             <div className="flex flex-col flex-1">
               <div className="flex justify-between gap-3 ">
-                <p>{selectedUser?.fullName}</p>
+                <p className="font-semibold font-sans">
+                  {selectedUser?.fullName}
+                </p>
               </div>
             </div>
           </div>
